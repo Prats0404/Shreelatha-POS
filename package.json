@@ -4,7 +4,7 @@
   "description": "Shreelatha Point Of Sale System fully unified for cloud environments",
   "main": "backend/server.js",
   "scripts": {
-    "build": "cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install",
+    "build": "cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install --build-from-source",
     "start": "cd backend && node server.js"
   },
   "engines": {
