@@ -12,7 +12,7 @@ const SalesDashboard = () => {
   useEffect(() => {
     const fetchSales = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/sales', { cache: 'no-store' });
+        const res = await fetch('/api/sales', { cache: 'no-store' });
         const data = await res.json();
         setSalesData(data);
         processData(data);

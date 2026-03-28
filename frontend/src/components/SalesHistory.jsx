@@ -7,7 +7,7 @@ const SalesHistory = () => {
   
   const fetchSales = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/sales', { cache: 'no-store' });
+      const res = await fetch('/api/sales', { cache: 'no-store' });
       const data = await res.json();
       setSales(data);
     } catch (err) {
@@ -35,7 +35,7 @@ const SalesHistory = () => {
   const handleResetHistory = async () => {
     if (!window.confirm('Are you ABSOLUTELY sure you want to wipe ALL sales history? This cannot be undone.')) return;
     try {
-      await fetch('http://localhost:3001/api/sales', { method: 'DELETE' });
+      await fetch('/api/sales', { method: 'DELETE' });
       setSales([]); // dynamically clear view efficiently
     } catch(err) {
       console.error('Failed to reset history', err);
@@ -90,7 +90,7 @@ const SalesHistory = () => {
   const handleDeleteSale = async (id) => {
     if (!window.confirm(`Are you sure you want to delete Bill #${id}?`)) return;
     try {
-      await fetch(`http://localhost:3001/api/sales/${id}`, { method: 'DELETE' });
+      await fetch(`/api/sales/${id}`, { method: 'DELETE' });
       fetchSales();
     } catch (err) {
       console.error('Failed to delete sale', err);

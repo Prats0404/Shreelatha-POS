@@ -6,7 +6,7 @@ const BillingSystem = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/menu', { cache: 'no-store' })
+    fetch('/api/menu', { cache: 'no-store' })
       .then(res => res.json())
       .then(data => setMenuItems(data))
       .catch(err => console.error(err));
@@ -46,7 +46,7 @@ const BillingSystem = () => {
     
     // Save to sales history
     try {
-      await fetch('http://localhost:3001/api/sales', {
+      await fetch('/api/sales', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

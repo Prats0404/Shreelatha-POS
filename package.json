@@ -1,5 +1,13 @@
 {
-  "dependencies": {
-    "react-router-dom": "^7.13.2"
+  "name": "shreelatha-pos",
+  "version": "1.0.0",
+  "description": "Shreelatha Point Of Sale System fully unified for cloud environments",
+  "main": "backend/server.js",
+  "scripts": {
+    "build": "cd frontend && npm install --include=dev && npm run build && cd ../backend && npm install",
+    "start": "cd backend && node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

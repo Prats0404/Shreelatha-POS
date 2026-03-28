@@ -8,7 +8,7 @@ const MenuManager = () => {
 
   const fetchItems = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/menu', { cache: 'no-store' });
+      const res = await fetch('/api/menu', { cache: 'no-store' });
       const data = await res.json();
       setItems(data);
     } catch (err) {
@@ -23,8 +23,8 @@ const MenuManager = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editingId 
-      ? `http://localhost:3001/api/menu/${editingId}`
-      : 'http://localhost:3001/api/menu';
+      ? `/api/menu/${editingId}`
+      : '/api/menu';
     const method = editingId ? 'PUT' : 'POST';
 
     try {
@@ -65,8 +65,8 @@ const MenuManager = () => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:3001/api/menu/${id}`, { method: 'DELETE' });
-      const res = await fetch('http://localhost:3001/api/menu', { cache: 'no-store' });
+      await fetch(`/api/menu/${id}`, { method: 'DELETE' });
+      const res = await fetch('/api/menu', { cache: 'no-store' });
       const data = await res.json();
       setItems(data);
     } catch (err) {

@@ -7,7 +7,7 @@ const InventorySystem = () => {
 
   const fetchItems = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/inventory', { cache: 'no-store' });
+      const res = await fetch('/api/inventory', { cache: 'no-store' });
       const data = await res.json();
       setItems(data);
     } catch (err) {
@@ -23,7 +23,7 @@ const InventorySystem = () => {
     e.preventDefault();
     if (!newItemName.trim()) return;
     try {
-      await fetch('http://localhost:3001/api/inventory', {
+      await fetch('/api/inventory', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newItemName })
@@ -37,7 +37,7 @@ const InventorySystem = () => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:3001/api/inventory/${id}`, { method: 'DELETE' });
+      await fetch(`/api/inventory/${id}`, { method: 'DELETE' });
       fetchItems();
     } catch (err) {
       console.error(err);
@@ -55,7 +55,7 @@ const InventorySystem = () => {
     setItems(items.map(i => i.id === id ? { ...i, stock_half: newStockHalf, stock_full: newStockFull } : i));
 
     try {
-        await fetch(`http://localhost:3001/api/inventory/${id}/stock`, {
+        await fetch(`/api/inventory/${id}/stock`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ stock_half: newStockHalf, stock_full: newStockFull })
